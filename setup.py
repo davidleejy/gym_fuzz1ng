@@ -23,6 +23,8 @@ setup(
         'gym>=0.10.3',
         'xxhash>=1.0.1',
         'posix_ipc>=1.0.3',
+        'bitarray>=0.8.3',
+        'python>=3.5,<=3.6'
     ],
     author='adbq, spolu',
     package_data={

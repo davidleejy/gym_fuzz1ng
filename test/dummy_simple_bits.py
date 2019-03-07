@@ -37,7 +37,8 @@ def main():
     for i in inputs:
         obs, reward, done, info = env.step(np.array(i))
         c.add(info['step_coverage'])
-
+        print('obs coords where > 0: ', np.where(np.array(obs) > 0))
+        print('input_data used:', info['input_data'])
         print(("STEP: reward={} done={} " +
                "step={}/{}/{} total={}/{}/{} " +
                "sum={}/{}/{} action={}").format(

@@ -8,6 +8,9 @@ class Dictionary:
         if self.config['bytes']:
             for b in range(256):
                 self.content.append(bytes([b]))
+        # suppose `config` is {'tokens' : ['wasfd', 'asdf'], 'bytes' : True}.
+        # then now
+        # self.content would be ['wasfd', 'asdf', b'\x00', b'\x01', b'\x02',  ...  ,b'\xff']
 
     def size(self):
         return len(self.content) + 1

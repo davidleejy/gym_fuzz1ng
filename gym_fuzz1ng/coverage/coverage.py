@@ -5,8 +5,8 @@ import xxhash
 from gym_fuzz1ng.coverage.forkclient import ForkClient
 from gym_fuzz1ng.coverage.forkclient import STATUS_CRASHED
 
-PATH_MAP_SIZE = 2**16
-EDGE_MAP_SIZE = 2**8
+PATH_MAP_SIZE = 2**16  #65536
+EDGE_MAP_SIZE = 2**8   #256
 
 
 class Coverage:

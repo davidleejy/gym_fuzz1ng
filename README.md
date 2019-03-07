@@ -1,5 +1,51 @@
 # gym-fuzz1ng
 
+## Info for Collaborators
+
+AFL (a popular fuzzer) is wrapped in an OpenAI gym environment. `dummy_simple_bits_v2.py` creates an environment that has AFL and a simple binary to be fuzzed, and picks random actions (bit flips, bit insertions, etc.) to mutate the input to be passed to the binary. 
+
+`fuzz_simple_bits_env_v2.py` contains the environment that is used.
+
+The RL agent is not implemented yet.
+
+More info in google docs for now :)
+
+## Install
+
+Python version 3.5.x or 3.6.x
+
+```
+# Activate virtual environment if you're using one (generally speaking it's good practise to haha)
+conda activate gymfuzz
+
+# cd to where the setup.py file is
+cd gym_fuzz1ng
+
+# Install gym_fuzz1ng package. -e flag means editable. Editable means that modifying the code here will directly modify the gym_fuzz1ng package that is imported elsewhere.
+pip install -e .
+
+# Let's build AFL (a popular fuzzer) and toy binaries for fuzzing.
+cd gym_fuzz1ng/mods
+make clean
+make all
+
+# Turns out that AFL needs 2 things to be set: core pattern and cpu frequency scaling. You may need to run the following as superuser. If you cannot "sudo echo", try "sudo bash" to launch an elevated bash shell to run these commands.
+
+echo core >/proc/sys/kernel/core_pattern
+
+echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+# Run a dummy example.
+python test/dummy_simple_bits_v2.py
+```
+
+## credits
+Forked from https://github.com/spolu/gym_fuzz1ng and modified.
+
+# README OF ORIGINAL REPO:
+
+# gym-fuzz1ng
+
 OpenAI Gym[0] environment for binary fuzzing of a variety of libraries (libpng
 for now), executables, as well as simpler examples.
 

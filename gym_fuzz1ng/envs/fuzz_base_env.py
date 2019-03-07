@@ -23,6 +23,7 @@ class FuzzBaseEnv(gym.Env):
         self.action_space = spaces.Box(
             0, self._dict.eof(), shape=(self._input_size,), dtype='int32',
         )
+        self.total_coverage = None
         self.reset()
 
     def reset(self):
